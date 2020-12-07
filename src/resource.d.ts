@@ -11,4 +11,7 @@ declare module '*.html' {
   export function register(container: IContainer);
 }
 
-declare module '*.css';
+declare module '*.css' {
+  const value: Record<string, string>;
+  export default value;
+}
