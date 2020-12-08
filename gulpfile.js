@@ -24,7 +24,7 @@ const dr = dumber({
   // src: 'src',
 
   // requirejs baseUrl, dumber default is "/dist"
-  baseUrl: '/' + dist,
+  baseUrl: isProduction ? '/' : '/' + dist,
 
   // can turn off cache for production build
   // cache: !isProduction,
@@ -117,13 +117,6 @@ function copyResources() {
     .src(["content/**/*.{gif,jpg,png,svg}"])
     .pipe(gulp.dest("dist/content"));
 }
-
-// function copyData() {
-//   console.log('Copying Data');
-//   return gulp
-//     .src(["data/**/*.json"])
-//     .pipe(gulp.dest("dist/data"));
-// }
 
 function buildCss(src) {
   return gulp.src(src, { sourcemaps: !isProduction })
