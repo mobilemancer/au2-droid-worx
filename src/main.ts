@@ -10,7 +10,7 @@ import * as Modules from "./modules/globalModules";
 import * as ValueConverters from "./value-converters/globalValueConverters";
 
 Aurelia.register(
-  RouterConfiguration.customize({ useUrlFragmentHash: false }),
+  RouterConfiguration.customize({ useUrlFragmentHash: true }),
   Registration.singleton(IDataService, DataService),
 
   Modules,
