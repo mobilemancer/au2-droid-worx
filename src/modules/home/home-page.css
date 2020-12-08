@@ -19,6 +19,10 @@
 
 .home-page img {
   max-width: 200px;
+  display: block;
+  max-width:230px;
+  width: auto;
+  height: auto;
 }
 
 .home-page .visitors {
@@ -35,4 +39,10 @@
   margin-left: 5px;
   font-family: var(--font-family--header);
   z-index: 100;
+}
+
+.home-page .featured-droid {
+  display: inline-flex;
+  height: 300px;
+  justify-content: center;
 }
