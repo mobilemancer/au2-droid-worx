@@ -115,7 +115,7 @@ function copyResources() {
   console.log('Copying Content');
   return gulp
     .src(["content/**/*.{gif,jpg,png,svg}"])
-    .pipe(gulp.dest("dist/content"));
+    .pipe(gulp.dest(baseurl + "/content"));
 }
 
 function buildCss(src) {
