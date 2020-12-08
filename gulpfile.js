@@ -85,6 +85,7 @@ const dr = dumber({
   onManifest: isTest ? undefined : function (filenameMap) {
     // Update index.html entry-bundle.js with entry-bundle.hash...js
     console.log('Update index.html with ' + filenameMap['entry-bundle.js']);
+
     const indexHtml = fs.readFileSync('_index_dev.html').toString()
       .replace('entry-bundle.js', filenameMap['entry-bundle.js']);
     fs.writeFileSync('index.html', indexHtml);
@@ -94,6 +95,7 @@ const dr = dumber({
       .replace('entry-bundle.js', filenameMap['entry-bundle.js']);
     fs.writeFileSync('dist/index.html', indexHtmlProd);
 
+    copyResources();
   }
 });
 
@@ -115,7 +117,7 @@ function copyResources() {
   console.log('Copying Content');
   return gulp
     .src(["content/**/*.{gif,jpg,png,svg}"])
-    .pipe(gulp.dest(baseurl + "/content"));
+    .pipe(gulp.dest("dist/content"));
 }
 
 function buildCss(src) {
@@ -134,6 +136,7 @@ function buildCss(src) {
 }
 
 function build() {
+  copyResources();
   // Merge all js/css/html file streams to feed dumber.
   // dumber knows nothing about .ts/.less/.scss/.md files,
   // gulp-* plugins transpiled them into js/css/html before
@@ -185,7 +188,7 @@ function reload(done) {
 
 // Watch all files for rebuild and reload browserSync.
 function watch() {
-  gulp.watch('src/**/*', gulp.series(build, copyResources, reload));
+  gulp.watch('src/**/*', gulp.series(build, reload));
 }
 
 const run = gulp.series(clean, serve, watch);
@@ -196,4 +199,3 @@ exports['clear-cache'] = clearCache;
 exports.run = run;
 exports.default = run;
 exports.copyResources = copyResources;
-// exports.copyData = copyData;
