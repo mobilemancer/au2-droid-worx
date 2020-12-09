@@ -90,12 +90,10 @@ const dr = dumber({
       .replace('entry-bundle.js', filenameMap['entry-bundle.js']);
     fs.writeFileSync('index.html', indexHtml);
 
-    
+
     const indexHtmlProd = fs.readFileSync('_index.html').toString()
       .replace('entry-bundle.js', filenameMap['entry-bundle.js']);
     fs.writeFileSync('dist/index.html', indexHtmlProd);
-
-    copyResources();
   }
 });
 

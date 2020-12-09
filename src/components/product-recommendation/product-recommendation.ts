@@ -6,10 +6,10 @@ export class ProductRecommendation {
 
   constructor(@IEventAggregator private eventAggregator: EventAggregator) {}
 
-  public afterBind() {
+  public attached() {
     if (!this.item.productName || this.item.productName === "") return;
     const fileName = this.item.productName.replace(/\s/g, "_") + ".png";
-    this.imgSource = "./../../../../../content/images/products/" + fileName;
+    this.imgSource = "content/images/products/" + fileName;
   }
 
   public filterProduct(model: string) {

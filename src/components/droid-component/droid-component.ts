@@ -8,11 +8,11 @@ export class DroidComponent {
 
   constructor(@IEventAggregator private eventAggregator: EventAggregator) {}
 
-  public attached() {
+  public attached(): void {
     this.imgSource = this.productImage(this.droid.model);
   }
 
-  public addToCart() {
+  public addToCart(): void {
     this.eventAggregator.publish("add-item", this.droid);
   }
 
@@ -20,7 +20,6 @@ export class DroidComponent {
     if (!model || model === "") return "";
     const fileName = model.replace(/\s/g, "_") + ".png";
     const url = "content/images/products/" + fileName;
-    console.log(url);
     return url;
   }
 }
