@@ -15,9 +15,8 @@ export class StatsPart {
 
   constructor(@IDataService private dataService: DataService) {}
 
-  public enter(legendName: object) {
-    if (!legendName || !legendName[0]) return false;
-
-    this.legend = this.dataService.getLegend(legendName[0]);
+  public load(params: Record<string, unknown>): void {
+    if (!params) return;
+    this.legend = <ILegend>params["legend"];
   }
 }
