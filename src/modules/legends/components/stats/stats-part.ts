@@ -1,5 +1,3 @@
-import { DataService } from "../../../../services/dataService";
-import { IDataService } from "../../../../common/IDataService";
 import { ILegend } from "./../../../../common/ILegend";
 
 export class StatsPart {
@@ -12,12 +10,6 @@ export class StatsPart {
   public get calculatedHeight(): string {
     return !!this.legend && this.legend?.height !== 0 ? this.legend.height + " m" : "Unknown";
   }
-
-  constructor(@IDataService private dataService: DataService) {}
-
-  // public canLoad(params: { legend: ILegend }): boolean {
-  //   return typeof params.legend === "object";
-  // }
 
   public load(params: Record<string, unknown>): void {
     if (typeof params.legend !== "object") return;
