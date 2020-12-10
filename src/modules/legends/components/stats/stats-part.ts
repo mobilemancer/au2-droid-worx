@@ -1,23 +1,18 @@
-import { DataService } from "../../../../services/dataService";
-import { IDataService } from "../../../../common/IDataService";
 import { ILegend } from "./../../../../common/ILegend";
 
 export class StatsPart {
   public legend: ILegend;
 
   public get calculatedMass(): string {
-    return this.legend.mass !== 0 ? this.legend.mass + " kg" : "Unknown";
+    return !!this.legend && this.legend?.mass !== 0 ? this.legend.mass + " kg" : "Unknown";
   }
 
   public get calculatedHeight(): string {
-    return this.legend.height !== 0 ? this.legend.height + " m" : "Unknown";
+    return !!this.legend && this.legend?.height !== 0 ? this.legend.height + " m" : "Unknown";
   }
 
-  constructor(@IDataService private dataService: DataService) {}
-
-  public enter(legendName: object) {
-    if (!legendName || !legendName[0]) return false;
-
-    this.legend = this.dataService.getLegend(legendName[0]);
+  public load(params: Record<string, unknown>): void {
+    if (typeof params.legend !== "object") return;
+    this.legend = <ILegend>params["legend"];
   }
 }

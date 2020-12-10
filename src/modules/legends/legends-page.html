@@ -1,12 +1,16 @@
 <div class="container">
   <div class="legend-list">
     <div class="list-heading">
-      <h2>
-        LEGENDARY DROIDS
-      </h2>
+      <h2>LEGENDARY DROIDS</h2>
     </div>
 
-    <!-- code here! -->
+    <div class="legend" repeat.for="legend of legends">
+      <a
+        load.bind="[{ component: 'stats-part', parameters: { legend }, viewport: 'stats-viewport' }, { component: 'image-part', parameters: { legend }, viewport: 'image-viewport' }]"
+      >
+        <h1>${legend.name}</h1>
+      </a>
+    </div>
   </div>
 
   <au-viewport class="images" name="image-viewport"></au-viewport>

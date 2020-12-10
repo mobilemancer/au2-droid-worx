@@ -1,5 +1,22 @@
 {
   "staticWebApps.appSubpath": "src",
   "staticWebApps.apiSubpath": "",
-  "staticWebApps.outputSubpath": "build"
+  "staticWebApps.outputSubpath": "build",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#7a96c6",
+    "activityBar.activeBorder": "#9c4364",
+    "activityBar.background": "#7a96c6",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#9c4364",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "statusBar.background": "#567ab7",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#7a96c6",
+    "titleBar.activeBackground": "#567ab7",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#567ab799",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#567ab7"
 }
