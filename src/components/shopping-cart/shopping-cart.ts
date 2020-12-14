@@ -7,20 +7,20 @@ export class ShoppingCart {
     imgSource: string;
     price: number;
   }[] = [];
-  public totalPrice: number = 0;
+  public totalPrice = 0;
 
   private eventListeners: IDisposable[] = [];
 
   constructor(@IEventAggregator private eventAggregator: EventAggregator) {
     this.eventListeners.push(
-      eventAggregator.subscribe("add-item", (product: any) => {
-        let prod = this.cart.filter((p) => p.productName === product.model);
+      eventAggregator.subscribe("add-item", (product: Record<string, unknown>) => {
+        const prod = this.cart.filter((p) => p.productName === product.model);
         if (prod.length === 0) {
           this.cart.push({
-            productName: product.model,
+            productName: product.model as string,
             qty: 1,
-            imgSource: this.getImageLink(product.model),
-            price: product.price,
+            imgSource: this.getImageLink(product.model as string),
+            price: product.price as number,
           });
         } else {
           prod[0].qty += 1;
@@ -31,7 +31,7 @@ export class ShoppingCart {
     );
   }
 
-  public afterUnbind() {
+  public afterUnbind(): void {
     this.eventListeners.forEach((el) => el.dispose());
   }
 
@@ -43,7 +43,7 @@ export class ShoppingCart {
     this.totalPrice = total;
   }
 
-  public filterProduct(model: string) {
+  public filterProduct(model: string): void {
     this.eventAggregator.publish("filter", model);
   }
 
