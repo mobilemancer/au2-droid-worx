@@ -10,7 +10,7 @@ import * as Modules from "./modules/globalModules";
 import * as ValueConverters from "./value-converters/globalValueConverters";
 
 Aurelia.register(
-  RouterConfiguration.customize({ useUrlFragmentHash: true }),
+  RouterConfiguration.customize({ useUrlFragmentHash: true, title: "Doop's Droid Emporium" }),
   Registration.singleton(IDataService, DataService),
 
   Modules,
