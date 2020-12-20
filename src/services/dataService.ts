@@ -1,28 +1,39 @@
-import { HttpClient, HttpClientConfiguration, IHttpClient } from "aurelia";
+import { EventAggregator, HttpClient, HttpClientConfiguration, IEventAggregator, IHttpClient } from "aurelia";
 
 import { IProductRecommendation } from "./../common/IProductRecommendation";
 import { IFilterProperties } from "./../common/IFilterProperties";
 import { IDroid } from "./../common/IDroid";
 import { ILegend } from "../common/ILegend";
 
-import legends from "../../data/legends.json";
-import products from "../../data/products.json";
+// import legends from "../../data/legends.json";
+// import products from "../../data/products.json";
 import productRecommendations from "../../data/product-recommendations.json";
 
 export class DataService {
   public legends: ILegend[] = [];
   public products: IDroid[] = [];
-  private productRecommendations = [];
+  private productRecommendations;
 
-  constructor(@IHttpClient private readonly httpClient: HttpClient) {
-    this.legends = legends;
-    this.products = products;
+  constructor(
+    @IHttpClient private readonly httpClient: HttpClient,
+    @IEventAggregator private readonly eventAggregator: EventAggregator
+  ) {
+    // this.legends = legends;
+    // this.products = products;
     this.productRecommendations = productRecommendations;
     this.init();
   }
 
   private async init() {
-    await this.requestData("product");
+    const products = ((await this.requestData("product")) as unknown) as IDroid[];
+    this.products.push(...products);
+    this.eventAggregator.publish("filter", "");
+
+    const legends = ((await this.requestData("product/legends")) as unknown) as ILegend[];
+    this.legends.push(...legends);
+
+    // const products = ((await this.requestData("product")) as unknown) as IDroid[];
+    // this.products.push(...products);
   }
 
   public getLegend(name: string): ILegend {
@@ -36,7 +47,7 @@ export class DataService {
   }
 
   public filterProducts(fragment: string, filterProps: IFilterProperties): IDroid[] {
-    let res = this.filterByText(fragment).filter((d) => {
+    const res = this.filterByText(fragment)?.filter((d) => {
       return (
         (filterProps.arakyd && d.manufacturer.includes("Arakyd")) ||
         (filterProps.automaton && d.manufacturer.includes("Automaton")) ||
@@ -63,7 +74,7 @@ export class DataService {
     } else {
       fragment = fragment.toLowerCase();
       return this.products.filter((d) => {
-        return d.class.toLowerCase().includes(fragment) || d.model.toLowerCase().includes(fragment);
+        return d.droidClass.toLowerCase().includes(fragment) || d.model.toLowerCase().includes(fragment);
       });
     }
   }

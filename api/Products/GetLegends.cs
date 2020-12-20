@@ -5,19 +5,22 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Text.Json;
 
 namespace mobilemancer.DroidWorx.Products
 {
-  public static class GetLegends
+    public static class GetLegends
   {
     [FunctionName(nameof(GetLegends))]
     public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "products/legends")] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "product/legends")] HttpRequest req,
         ExecutionContext context,
         ILogger log)
     {
       log.LogInformation($"{nameof(GetLegends)} function processed a request.");
-      var legends = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "legends.json"));
+      var data = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "legends.json"));
+      var legends = JsonSerializer.Deserialize<IEnumerable<Legend>>(data);
       return new OkObjectResult(legends);
     }
   }

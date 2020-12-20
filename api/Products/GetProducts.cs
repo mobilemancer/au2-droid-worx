@@ -5,6 +5,8 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
+using System.Collections.Generic;
 
 namespace mobilemancer.DroidWorx.Products
 {
@@ -17,7 +19,8 @@ namespace mobilemancer.DroidWorx.Products
         ILogger log)
     {
       log.LogInformation($"{nameof(GetProducts)} function processed a request.");
-      var products = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "products.json"));
+      var data = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "products.json"));
+      var products = JsonSerializer.Deserialize<IEnumerable<Droid>>(data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
       return new OkObjectResult(products);
     }
   }

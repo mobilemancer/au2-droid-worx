@@ -8,19 +8,11 @@
     </div>
 
     <div class="specs-card">
-      <h2>${droid.class}</h2>
-      <div
-        if.bind="droid.armament.length > 0"
-        class="armaments"
-        title.bind="droid.armament"
-      >
+      <h2>${droid.droidClass}</h2>
+      <div if.bind="droid.armament.length > 0" class="armaments" title.bind="droid.armament">
         Armaments <b>(${droid.armament.length})</b>
       </div>
-      <div
-        if.bind="droid.equipment.length > 0"
-        class="equipment"
-        title.bind="droid.equipment"
-      >
+      <div if.bind="droid.equipment.length > 0" class="equipment" title.bind="droid.equipment">
         Equipment <b>(${droid.equipment.length})</b>
       </div>
       <div if.bind="droid.sensorColor.length>0" class="sensor-color">
