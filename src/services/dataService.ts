@@ -22,7 +22,7 @@ export class DataService {
   }
 
   private async init() {
-    await this.requestData("api/product");
+    await this.requestData("product");
   }
 
   public getLegend(name: string): ILegend {
@@ -70,7 +70,7 @@ export class DataService {
 
   private async requestData(route: string): Promise<Record<string, unknown>> {
     const config = new HttpClientConfiguration();
-    config.withBaseUrl("/");
+    config.withBaseUrl("http://localhost:7071/api/");
     const headers: HeadersInit = { Accept: "application/json", "X-Requested-With": "Fetch" };
     config.withDefaults({
       credentials: "same-origin",
