@@ -15,7 +15,7 @@ namespace mobilemancer.DroidWorx.Products
   {
     [FunctionName(nameof(GetProductRecommendations))]
     public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "product/recommendation")] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "product/recommendations")] HttpRequest req,
         ExecutionContext context,
         ILogger log)
     {

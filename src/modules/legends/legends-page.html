@@ -6,13 +6,12 @@
 
     <div class="legend" repeat.for="legend of legends">
       <a
-        load.bind="[{ component: 'stats-part', parameters: { legend }, viewport: 'stats-viewport' }, { component: 'image-part', parameters: { legend }, viewport: 'image-viewport' }]"
-      >
+        load.bind="[{ component: 'stats-part', parameters: { legend }, viewport: 'stats-viewport' }, { component: 'image-part', parameters: { legend }, viewport: 'image-viewport' }]">
         <h1>${legend.name}</h1>
       </a>
     </div>
   </div>
 
-  <au-viewport class="images" name="image-viewport"></au-viewport>
-  <au-viewport class="stats" name="stats-viewport"></au-viewport>
+  <au-viewport class="images" name="image-viewport" no-link></au-viewport>
+  <au-viewport class="stats" name="stats-viewport" no-link></au-viewport>
 </div>

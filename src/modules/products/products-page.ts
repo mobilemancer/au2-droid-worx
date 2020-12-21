@@ -6,9 +6,10 @@ import { DataService } from "../../services/dataService";
 
 export class ProductsPage {
   @bindable public filteredProducts: IDroid[] = [];
-  public productRecommendations = [];
+  public productRecommendations;
 
   constructor(@IDataService dataService: DataService) {
-    this.productRecommendations = dataService.getRecommendations(4);
+    this.productRecommendations = dataService.productRecommendations;
   }
+
 }

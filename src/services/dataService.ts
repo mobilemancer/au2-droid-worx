@@ -1,16 +1,17 @@
-import { EventAggregator, HttpClient, HttpClientConfiguration, IEventAggregator, IHttpClient } from "aurelia";
+import {
+  bindable, EventAggregator, HttpClient, HttpClientConfiguration,
+  IEventAggregator, IHttpClient
+} from "aurelia";
 
 import { IProductRecommendation } from "./../common/IProductRecommendation";
 import { IFilterProperties } from "./../common/IFilterProperties";
 import { IDroid } from "./../common/IDroid";
 import { ILegend } from "../common/ILegend";
 
-// import productRecommendations from "../../data/product-recommendations.json";
-
 export class DataService {
   public legends: ILegend[] = [];
   public products: IDroid[] = [];
-  private productRecommendations = [];
+  public productRecommendations=[];
 
   constructor(
     @IHttpClient private readonly httpClient: HttpClient,
@@ -22,10 +23,10 @@ export class DataService {
   private async init() {
     const products = ((await this.requestData("product")) as unknown) as IDroid[];
     this.products.push(...products);
-    // this.eventAggregator.publish("filter", "");
+    this.eventAggregator.publish("filter", "");
 
     const legends = ((await this.requestData("product/legends")) as unknown) as ILegend[];
-    this.legends.push(...legends);
+    this.legends.push(...legends);  
 
     const recommendations = await this.requestData("product/recommendations");
     this.productRecommendations.push(...recommendations);
@@ -52,8 +53,8 @@ export class DataService {
     return res;
   }
 
-  public getRecommendations(amount: number): IProductRecommendation[] {
-    if (this.productRecommendations.length === 0) return;
+  public get recommendations(): IProductRecommendation[] {
+    if (this.productRecommendations?.length < 1) return;
 
     const results = [];
     do {
@@ -61,9 +62,13 @@ export class DataService {
         Math.floor(Math.random() * this.productRecommendations.length)
       ];
       if (results.indexOf(item) < 0) results.push(item);
-    } while (results.length < amount);
+    } while (results.length < this.productRecommendations.length);
     return results;
   }
+
+
+
+
 
   private filterByText(fragment: string): IDroid[] {
     if (!fragment || fragment === "") {
