@@ -11,7 +11,8 @@ indent_style = space
 
 #Formatting - organize using options
 
-#do not place System.* using directives before other using directives
+#place System.* using directives before other using directives
+dotnet_separate_import_directive_groups  = true
 dotnet_sort_system_directives_first = true
 
 #Formatting - spacing options
@@ -54,3 +55,5 @@ dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggest
 
 #when this rule is set to a list of modifiers, prefer the specified ordering.
 csharp_preferred_modifier_order = public,static,async:suggestion
+
+

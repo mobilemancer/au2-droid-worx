@@ -22,13 +22,13 @@ export class DataService {
   private async init() {
     const products = ((await this.requestData("product")) as unknown) as IDroid[];
     this.products.push(...products);
-    this.eventAggregator.publish("filter", "");
+    // this.eventAggregator.publish("filter", "");
 
-    // const legends = ((await this.requestData("product/legends")) as unknown) as ILegend[];
-    // this.legends.push(...legends);
+    const legends = ((await this.requestData("product/legends")) as unknown) as ILegend[];
+    this.legends.push(...legends);
 
-    // const recommendations = (await this.requestData("product/recommendations"));
-    // this.productRecommendations.push(...recommendations);
+    const recommendations = await this.requestData("product/recommendations");
+    this.productRecommendations.push(...recommendations);
   }
 
   public getLegend(name: string): ILegend {
@@ -53,6 +53,8 @@ export class DataService {
   }
 
   public getRecommendations(amount: number): IProductRecommendation[] {
+    if (this.productRecommendations.length === 0) return;
+
     const results = [];
     do {
       const item = this.productRecommendations[

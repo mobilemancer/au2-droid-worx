@@ -10,7 +10,7 @@ using System.Text.Json;
 
 namespace mobilemancer.DroidWorx.Products
 {
-    public static class GetLegends
+  public static class GetLegends
   {
     [FunctionName(nameof(GetLegends))]
     public static async Task<IActionResult> Run(
@@ -20,7 +20,7 @@ namespace mobilemancer.DroidWorx.Products
     {
       log.LogInformation($"{nameof(GetLegends)} function processed a request.");
       var data = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "legends.json"));
-      var legends = JsonSerializer.Deserialize<IEnumerable<Legend>>(data);
+      var legends = JsonSerializer.Deserialize<IEnumerable<Legend>>(data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
       return new OkObjectResult(legends);
     }
   }
