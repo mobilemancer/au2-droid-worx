@@ -5,22 +5,17 @@ import { IFilterProperties } from "./../common/IFilterProperties";
 import { IDroid } from "./../common/IDroid";
 import { ILegend } from "../common/ILegend";
 
-// import legends from "../../data/legends.json";
-// import products from "../../data/products.json";
-import productRecommendations from "../../data/product-recommendations.json";
+// import productRecommendations from "../../data/product-recommendations.json";
 
 export class DataService {
   public legends: ILegend[] = [];
   public products: IDroid[] = [];
-  private productRecommendations;
+  private productRecommendations = [];
 
   constructor(
     @IHttpClient private readonly httpClient: HttpClient,
     @IEventAggregator private readonly eventAggregator: EventAggregator
   ) {
-    // this.legends = legends;
-    // this.products = products;
-    this.productRecommendations = productRecommendations;
     this.init();
   }
 
@@ -29,11 +24,11 @@ export class DataService {
     this.products.push(...products);
     this.eventAggregator.publish("filter", "");
 
-    const legends = ((await this.requestData("product/legends")) as unknown) as ILegend[];
-    this.legends.push(...legends);
+    // const legends = ((await this.requestData("product/legends")) as unknown) as ILegend[];
+    // this.legends.push(...legends);
 
-    // const products = ((await this.requestData("product")) as unknown) as IDroid[];
-    // this.products.push(...products);
+    // const recommendations = (await this.requestData("product/recommendations"));
+    // this.productRecommendations.push(...recommendations);
   }
 
   public getLegend(name: string): ILegend {
@@ -79,7 +74,7 @@ export class DataService {
     }
   }
 
-  private async requestData(route: string): Promise<Record<string, unknown>> {
+  private async requestData(route: string): Promise<Record<string, unknown>[]> {
     const config = new HttpClientConfiguration();
     config.withBaseUrl("http://localhost:7071/api/");
     const headers: HeadersInit = { Accept: "application/json", "X-Requested-With": "Fetch" };
