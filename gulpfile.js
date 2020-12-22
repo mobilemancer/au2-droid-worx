@@ -118,6 +118,8 @@ function copyResources() {
     .pipe(gulp.dest("dist/content"));
 }
 
+
+
 function buildCss(src) {
   return gulp.src(src, { sourcemaps: !isProduction })
     .pipe(postcss([
@@ -133,7 +135,7 @@ function buildCss(src) {
     .pipe(cssModule());
 }
 
-function build() {
+function buildSource() {
   copyResources();
   // Merge all js/css/html file streams to feed dumber.
   // dumber knows nothing about .ts/.less/.scss/.md files,
@@ -166,6 +168,10 @@ function clearCache() {
   return dr.clearCache();
 }
 
+// exports.copyResources = copyResources;
+
+const build = gulp.parallel(copyResources, buildSource);
+
 const serve = gulp.series(
   build,
   function startServer(done) {
@@ -186,14 +192,14 @@ function reload(done) {
 
 // Watch all files for rebuild and reload browserSync.
 function watch() {
-  gulp.watch('src/**/*', gulp.series(build, reload));
+  gulp.watch(['src/**/*', 'content/**/*'], gulp.series(build, reload));
 }
 
 const run = gulp.series(clean, serve, watch);
 
 exports.build = build;
 exports.clean = clean;
+
 exports['clear-cache'] = clearCache;
 exports.run = run;
 exports.default = run;
-exports.copyResources = copyResources;

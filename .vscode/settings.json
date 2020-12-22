@@ -1,7 +1,7 @@
 {
   "staticWebApps.appSubpath": "src",
-  "staticWebApps.apiSubpath": "",
-  "staticWebApps.outputSubpath": "build",
+  "staticWebApps.apiSubpath": "api",
+  "staticWebApps.outputSubpath": "dist",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#7a96c6",
     "activityBar.activeBorder": "#9c4364",
