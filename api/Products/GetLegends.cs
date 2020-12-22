@@ -19,6 +19,7 @@ namespace mobilemancer.DroidWorx.Products
         ILogger log)
     {
       log.LogInformation($"{nameof(GetLegends)} function processed a request.");
+
       var data = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "legends.json"));
       var legends = JsonSerializer.Deserialize<IEnumerable<Legend>>(data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
       return new OkObjectResult(legends);

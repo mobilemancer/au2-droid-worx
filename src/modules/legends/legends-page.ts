@@ -1,5 +1,4 @@
-import { DataService } from "../../services/dataService";
-import { IDataService } from "../../common/IDataService";
+import { DataService, IDataService } from "../../services/dataService";
 import { ILegend } from "../../common/ILegend";
 
 export class LegendsPage {

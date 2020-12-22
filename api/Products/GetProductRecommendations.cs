@@ -20,6 +20,7 @@ namespace mobilemancer.DroidWorx.Products
         ILogger log)
     {
       log.LogInformation($"{nameof(GetProductRecommendations)} function processed a request.");
+
       var data = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "product-recommendations.json"));
       var recommendations = JsonSerializer.Deserialize<IEnumerable<ProductRecommendation>>(data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
       return new OkObjectResult(recommendations);

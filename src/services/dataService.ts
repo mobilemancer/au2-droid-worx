@@ -1,6 +1,10 @@
 import {
-  bindable, EventAggregator, HttpClient, HttpClientConfiguration,
-  IEventAggregator, IHttpClient
+  DI,
+  EventAggregator,
+  HttpClient,
+  HttpClientConfiguration,
+  IEventAggregator,
+  IHttpClient,
 } from "aurelia";
 
 import { IProductRecommendation } from "./../common/IProductRecommendation";
@@ -11,12 +15,21 @@ import { ILegend } from "../common/ILegend";
 export class DataService {
   public legends: ILegend[] = [];
   public products: IDroid[] = [];
-  public productRecommendations=[];
+  public productRecommendations = [];
 
   constructor(
     @IHttpClient private readonly httpClient: HttpClient,
     @IEventAggregator private readonly eventAggregator: EventAggregator
   ) {
+    const config = new HttpClientConfiguration();
+    const headers: HeadersInit = { Accept: "application/json", "X-Requested-With": "Fetch" };
+    config.withDefaults({
+      credentials: "same-origin",
+      headers: headers,
+    });
+    config.withBaseUrl(this.getBaseUrl());
+    this.httpClient.configure(() => config);
+
     this.init();
   }
 
@@ -26,7 +39,7 @@ export class DataService {
     this.eventAggregator.publish("filter", "");
 
     const legends = ((await this.requestData("product/legends")) as unknown) as ILegend[];
-    this.legends.push(...legends);  
+    this.legends.push(...legends);
 
     const recommendations = await this.requestData("product/recommendations");
     this.productRecommendations.push(...recommendations);
@@ -66,10 +79,6 @@ export class DataService {
     return results;
   }
 
-
-
-
-
   private filterByText(fragment: string): IDroid[] {
     if (!fragment || fragment === "") {
       return this.products;
@@ -82,16 +91,15 @@ export class DataService {
   }
 
   private async requestData(route: string): Promise<Record<string, unknown>[]> {
-    const config = new HttpClientConfiguration();
-    config.withBaseUrl("http://localhost:7071/api/");
-    const headers: HeadersInit = { Accept: "application/json", "X-Requested-With": "Fetch" };
-    config.withDefaults({
-      credentials: "same-origin",
-      headers: headers,
-    });
-    this.httpClient.configure(() => config);
-
     const response = await this.httpClient.fetch(route);
     return await response.json();
   }
+
+  private getBaseUrl() {
+    if (window.location.hostname.includes("localhost")) {
+      return "http://localhost:7071/api/";
+    } else return window.origin;
+  }
 }
+
+export const IDataService = DI.createInterface<DataService>();

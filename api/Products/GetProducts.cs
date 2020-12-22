@@ -19,6 +19,7 @@ namespace mobilemancer.DroidWorx.Products
         ILogger log)
     {
       log.LogInformation($"{nameof(GetProducts)} function processed a request.");
+
       var data = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "products.json"));
       var products = JsonSerializer.Deserialize<IEnumerable<Droid>>(data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
       return new OkObjectResult(products);
