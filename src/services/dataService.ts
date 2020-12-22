@@ -98,7 +98,7 @@ export class DataService {
   private getBaseUrl() {
     if (window.location.hostname.includes("localhost")) {
       return "http://localhost:7071/api/";
-    } else return window.origin;
+    } else return window.origin + "/api/";
   }
 }
 
