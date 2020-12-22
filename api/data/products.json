@@ -1,7 +1,7 @@
 [
   {
     "armament": [],
-    "class": "Analysis Droid",
+    "droidClass": "Analysis Droid",
     "equipment": ["Repulsorlift", "Sensor apparatus"],
     "height": 1,
     "manufacturer": "Cybot Galactica",
@@ -12,7 +12,7 @@
   },
   {
     "armament": [],
-    "class": "Analysis Droid",
+    "droidClass": "Analysis Droid",
     "equipment": ["*Repulsorlift", "Vocoder"],
     "height": 1.46,
     "manufacturer": "Cybot Galactica",
@@ -23,7 +23,7 @@
   },
   {
     "armament": [],
-    "class": "Labor Droid",
+    "droidClass": "Labor Droid",
     "equipment": [],
     "height": 1.46,
     "manufacturer": "Cybot Galactica",
@@ -34,7 +34,7 @@
   },
   {
     "armament": [],
-    "class": "Astromech Droid",
+    "droidClass": "Astromech Droid",
     "equipment": [
       "Acoustic signaler",
       "Fire extinguisher",
@@ -52,7 +52,7 @@
   },
   {
     "armament": [],
-    "class": "Astromech Droid",
+    "droidClass": "Astromech Droid",
     "equipment": [
       "Fire extinguisher",
       "Heat exhaust",
@@ -73,7 +73,7 @@
   },
   {
     "armament": [],
-    "class": "Astromech Droid",
+    "droidClass": "Astromech Droid",
     "equipment": [
       "Comlink",
       "Diagnostics package",
@@ -98,7 +98,7 @@
   },
   {
     "armament": ["Blaster", "Self-destruct mechanism"],
-    "class": "Probe Droid",
+    "droidClass": "Probe Droid",
     "equipment": ["Communicator", "Manipulator arms", "Repulsorlift"],
     "height": 1.83,
     "manufacturer": "Arakyd Industries",
@@ -109,7 +109,7 @@
   },
   {
     "armament": [],
-    "class": "Protocol Droid",
+    "droidClass": "Protocol Droid",
     "equipment": ["TranLang III communication module"],
     "height": 1.7,
     "manufacturer": "Cybot Galactica",
@@ -120,7 +120,7 @@
   },
   {
     "armament": [],
-    "class": "Protocol Droid",
+    "droidClass": "Protocol Droid",
     "equipment": [
       "TranLang III communication module",
       "Broadband photoreceptors with antiglare coating",

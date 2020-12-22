@@ -1,11 +1,11 @@
 export interface IDroid {
-    armament: string[];
-    class: string;
-    equipment: string[];
-    height: number;
-    manufacturer: string;
-    model: string;
-    platingColor: string[];
-    price: number;
-    sensorColor: string[];
+  armament: string[];
+  droidClass: string;
+  equipment: string[];
+  height: number;
+  manufacturer: string;
+  model: string;
+  platingColor: string[];
+  price: number;
+  sensorColor: string[];
 }
