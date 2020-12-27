@@ -52,6 +52,7 @@ body {
   background-color: var(--color--primary-bright-background);
   letter-spacing: 0.01rem;
   overflow: hidden;
+  height: 100vh;
 }
 
 h1,

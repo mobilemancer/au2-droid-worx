@@ -1,8 +1,19 @@
 .home-page {
+  height: calc(100vh - var(--menu-height));
   padding: 5rem 8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 3fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "header header header image"
+      "text text text image";
+      column-gap: var(--padding-default);
 }
 
+
 .home-page .header {
+  grid-area: header;
   font-family: var(--font-family--header);
   font-size: 5rem;
   line-height: 5rem;
@@ -12,6 +23,7 @@
 }
 
 .home-page-article {
+  grid-area: text;
   font-family: var(--font-family--normal);
   font-size: large;
   vertical-align: text-bottom;
@@ -20,29 +32,11 @@
 .home-page img {
   max-width: 200px;
   display: block;
-  max-width:230px;
   width: auto;
   height: auto;
 }
 
-.home-page .visitors {
-  position: absolute;
-  right: 30px;
-  bottom: 30px;
-
-  color: var(--color--primary-bright-foreground);
-  background-color: var(--color--primary-dark-foreground);
-  box-shadow: 10px 5px black;
-  padding: calc(var(--padding-default) / 2) var(--padding-default);
-  position: absolute;
-  margin-top: 100px;
-  margin-left: 5px;
-  font-family: var(--font-family--header);
-  z-index: 100;
-}
-
 .home-page .featured-droid {
-  display: inline-flex;
-  height: 300px;
-  justify-content: center;
+  grid-area: image;
+  place-self: center;
 }
