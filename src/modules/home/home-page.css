@@ -1,24 +1,76 @@
 .home-page {
   height: calc(100vh - var(--menu-height));
-  padding: 5rem 8rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 3fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      "header header header image"
-      "text text text image";
-      column-gap: var(--padding-default);
+  width: 100vw;
+  display: grid;
+  column-gap: var(--padding-default);
+  overflow: hidden;
 }
 
+.home-page img {
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+@media (max-device-width: 400px) {
+  .home-page {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 3fr;
+    grid-template-areas:
+      "header"
+      "image"
+      "text";
+  }
+
+  .home-page .header {
+    font-size: 2rem;
+    line-height: 2rem;
+    padding: var(--padding-default);
+  }
+
+  .home-page img {
+    max-height: 15rem;
+  }
+}
+
+@media (max-device-width: 800px) {
+  .home-page {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 2fr;
+    grid-template-areas:
+      "header"
+      "image"
+      "text";
+  }
+
+  .home-page .header {
+    font-size: 2rem;
+    line-height: 2rem;
+    padding: var(--padding-default);
+  }
+
+  .home-page img {
+    max-height: 15rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-page {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      ". . . . . ."
+      ". header header header image ."
+      ". text text text image ."
+      ". . . . . .";
+  }
+}
 
 .home-page .header {
   grid-area: header;
   font-family: var(--font-family--header);
-  font-size: 5rem;
-  line-height: 5rem;
-  margin: 10rem 0rem 3rem 0rem;
-  display: flex;
+  display: grid;
+  place-items: center;
   text-align: center;
 }
 
@@ -26,14 +78,7 @@
   grid-area: text;
   font-family: var(--font-family--normal);
   font-size: large;
-  vertical-align: text-bottom;
-}
-
-.home-page img {
-  max-width: 200px;
-  display: block;
-  width: auto;
-  height: auto;
+  padding: 0.5rem;
 }
 
 .home-page .featured-droid {
