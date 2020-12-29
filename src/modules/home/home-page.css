@@ -54,15 +54,25 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-device-width: 801px) {
   .home-page {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 3fr 2fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas:
-      ". . . . . ."
-      ". header header header image ."
-      ". text text text image ."
-      ". . . . . .";
+      ". . . ."
+      ". header header ."
+      ". text image ."
+      ". . . .";
+  }
+
+  .home-page .header {
+    font-size: 3rem;
+    line-height: 3rem;
+    padding: var(--padding-default);
+  }
+
+  .home-page img {
+    max-height: 20rem;
   }
 }
 
