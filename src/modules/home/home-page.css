@@ -12,6 +12,12 @@
   height: auto;
 }
 
+.home-page .header {
+  font-size: 2rem;
+  line-height: 2rem;
+  padding: var(--padding-default);
+}
+
 @media (max-device-width: 400px) {
   .home-page {
     grid-template-columns: 1fr;
@@ -20,12 +26,6 @@
       "header"
       "image"
       "text";
-  }
-
-  .home-page .header {
-    font-size: 2rem;
-    line-height: 2rem;
-    padding: var(--padding-default);
   }
 
   .home-page img {
@@ -41,12 +41,6 @@
       "header"
       "image"
       "text";
-  }
-
-  .home-page .header {
-    font-size: 2rem;
-    line-height: 2rem;
-    padding: var(--padding-default);
   }
 
   .home-page img {
@@ -68,7 +62,6 @@
   .home-page .header {
     font-size: 3rem;
     line-height: 3rem;
-    padding: var(--padding-default);
   }
 
   .home-page img {
