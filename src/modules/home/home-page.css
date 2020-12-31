@@ -1,48 +1,90 @@
 .home-page {
-  padding: 5rem 8rem;
-}
-
-.home-page .header {
-  font-family: var(--font-family--header);
-  font-size: 5rem;
-  line-height: 5rem;
-  margin: 10rem 0rem 3rem 0rem;
-  display: flex;
-  text-align: center;
-}
-
-.home-page-article {
-  font-family: var(--font-family--normal);
-  font-size: large;
-  vertical-align: text-bottom;
+  height: calc(100vh - var(--menu-height));
+  width: 100vw;
+  display: grid;
+  column-gap: var(--padding-default);
+  overflow: hidden;
 }
 
 .home-page img {
-  max-width: 200px;
   display: block;
-  max-width:230px;
   width: auto;
   height: auto;
 }
 
-.home-page .visitors {
-  position: absolute;
-  right: 30px;
-  bottom: 30px;
+.home-page .header {
+  font-size: 2rem;
+  line-height: 2rem;
+  padding: var(--padding-default);
+}
 
-  color: var(--color--primary-bright-foreground);
-  background-color: var(--color--primary-dark-foreground);
-  box-shadow: 10px 5px black;
-  padding: calc(var(--padding-default) / 2) var(--padding-default);
-  position: absolute;
-  margin-top: 100px;
-  margin-left: 5px;
+@media (max-device-width: 400px) {
+  .home-page {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 3fr;
+    grid-template-areas:
+      "header"
+      "image"
+      "text";
+  }
+
+  .home-page img {
+    max-height: 15rem;
+  }
+}
+
+@media (max-device-width: 800px) {
+  .home-page {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 2fr;
+    grid-template-areas:
+      "header"
+      "image"
+      "text";
+  }
+
+  .home-page img {
+    max-height: 15rem;
+  }
+}
+
+@media (min-device-width: 801px) {
+  .home-page {
+    grid-template-columns: 1fr 3fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      ". . . ."
+      ". header header ."
+      ". text image ."
+      ". . . .";
+  }
+
+  .home-page .header {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+
+  .home-page img {
+    max-height: 20rem;
+  }
+}
+
+.home-page .header {
+  grid-area: header;
   font-family: var(--font-family--header);
-  z-index: 100;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.home-page-article {
+  grid-area: text;
+  font-family: var(--font-family--normal);
+  font-size: large;
+  padding: 0.5rem;
 }
 
 .home-page .featured-droid {
-  display: inline-flex;
-  height: 300px;
-  justify-content: center;
+  grid-area: image;
+  place-self: center;
 }
