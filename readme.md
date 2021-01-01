@@ -1,6 +1,6 @@
 # Droid Worx - An Aurelia 2 Azure Static Web App Demo
 
-This is an Aurelia 2 demo app. It's hosted on Azure Sttatic Web Apps, and uses C# for the API.
+This is an Aurelia 2 demo app. It's hosted on Azure Static Web Apps, and uses C# for the API.
 
 Check out the live app [here](https://wonderful-water-0fbf97b03.azurestaticapps.net/).
 

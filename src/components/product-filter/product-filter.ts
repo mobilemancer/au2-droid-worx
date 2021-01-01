@@ -1,31 +1,26 @@
-import { bindable, IEventAggregator, EventAggregator, IDisposable } from "aurelia";
+import { bindable, IEventAggregator, EventAggregator, IDisposable, watch } from "aurelia";
 
 import { DataService, IDataService } from "./../../services/dataService";
 import { IDroid } from "./../../common/IDroid";
-import { IFilterProperties } from "../../common/IFilterProperties";
 
 export class ProductFilter {
   @bindable public filteredProducts: IDroid[];
 
-  @bindable public searchText: string;
+  public searchText: string;
+  public arakyd = true;
+  public cybot = true;
+  public automaton = true;
 
-  @bindable public arakyd: boolean;
-  @bindable public cybot: boolean;
-  @bindable public automaton: boolean;
-  private filterProperties: IFilterProperties = {
-    arakyd: true,
-    cybot: true,
-    automaton: true,
-  };
   private eventListeners: IDisposable[] = [];
 
   constructor(
-    @IDataService private dataService: DataService,
+    @IDataService private readonly dataService: DataService,
     @IEventAggregator eventAggregator: EventAggregator
   ) {
-    this.filteredProducts = dataService.filterProducts("", this.filterProperties);
+    this.triggerFilter();
 
     this.eventListeners.push(
+      // this event is triggered by other components, like for ex the Product-Recommendation
       eventAggregator.subscribe("filter", (model: string) => {
         this.searchText = model;
       })
@@ -36,22 +31,16 @@ export class ProductFilter {
     this.eventListeners.forEach((el) => el.dispose());
   }
 
-  public searchTextChanged(val: string): void {
-    this.filteredProducts = this.dataService.filterProducts(val, this.filterProperties);
-  }
-
-  public arakydChanged(val: boolean): void {
-    this.filterProperties.arakyd = val;
-    this.filteredProducts = this.dataService.filterProducts(this.searchText, this.filterProperties);
-  }
-
-  public automatonChanged(val: boolean): void {
-    this.filterProperties.automaton = val;
-    this.filteredProducts = this.dataService.filterProducts(this.searchText, this.filterProperties);
-  }
-
-  public cybotChanged(val: boolean): void {
-    this.filterProperties.cybot = val;
-    this.filteredProducts = this.dataService.filterProducts(this.searchText, this.filterProperties);
+  @watch((o: ProductFilter) => o.dataService.products?.length)
+  @watch((o: ProductFilter) => o.searchText?.length)
+  @watch((o: ProductFilter) => o.arakyd)
+  @watch((o: ProductFilter) => o.cybot)
+  @watch((o: ProductFilter) => o.automaton)
+  private triggerFilter() {
+    this.filteredProducts = this.dataService.filterProducts(this.searchText, {
+      arakyd: this.arakyd,
+      automaton: this.automaton,
+      cybot: this.cybot,
+    });
   }
 }

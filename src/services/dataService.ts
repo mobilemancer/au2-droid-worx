@@ -1,11 +1,4 @@
-import {
-  DI,
-  EventAggregator,
-  HttpClient,
-  HttpClientConfiguration,
-  IEventAggregator,
-  IHttpClient,
-} from "aurelia";
+import { DI, HttpClient, HttpClientConfiguration, IHttpClient } from "aurelia";
 
 import { IProductRecommendation } from "./../common/IProductRecommendation";
 import { IFilterProperties } from "./../common/IFilterProperties";
@@ -17,10 +10,7 @@ export class DataService {
   public products: IDroid[] = [];
   public productRecommendations = [];
 
-  constructor(
-    @IHttpClient private readonly httpClient: HttpClient,
-    @IEventAggregator private readonly eventAggregator: EventAggregator
-  ) {
+  constructor(@IHttpClient private readonly httpClient: HttpClient) {
     const config = new HttpClientConfiguration();
     const headers: HeadersInit = { Accept: "application/json", "X-Requested-With": "Fetch" };
     config.withDefaults({
@@ -36,7 +26,6 @@ export class DataService {
   private async init() {
     const products = ((await this.requestData("product")) as unknown) as IDroid[];
     this.products.push(...products);
-    this.eventAggregator.publish("filter", "");
 
     const legends = ((await this.requestData("product/legends")) as unknown) as ILegend[];
     this.legends.push(...legends);

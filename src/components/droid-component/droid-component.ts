@@ -6,7 +6,7 @@ export class DroidComponent {
   @bindable public droid: IDroid;
   public imgSource: string;
 
-  constructor(@IEventAggregator private eventAggregator: EventAggregator) {}
+  constructor(@IEventAggregator private readonly eventAggregator: EventAggregator) {}
 
   public attached(): void {
     this.imgSource = this.productImage(this.droid.model);
