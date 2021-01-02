@@ -2,20 +2,55 @@
   height: calc(100vh - var(--menu-height));
   overflow: hidden;
   display: grid;
-  grid-template-columns: 300px auto;
-  grid-template-rows: 75% 25%;
-  grid-template-areas: "upper-left upper-right" "lower-left lower-right";
 }
 
 .products {
   height: 100%;
-  overflow-x: scroll;
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
+}
+
+@media (max-width: 400px) {
+  .container {
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    grid-template-areas: "product-area";
+  }
+
+  .products {
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 800px) {
+  .container {
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    grid-template-areas: "prod-area";
+  }
+}
+
+@media (min-width: 801px) {
+  .container {
+    grid-template-columns: 300px auto;
+    grid-template-rows: 75% 25%;
+    grid-template-areas: "filter-area prod-area" "prod-rec prod-rec";
+  }
+}
+
+.filter {
+  grid-area: filter-area;
 }
 
 .recommendations {
-  grid-area: auto;
-  display: flex;
-  flex-direction: row;
+  grid-area: prod-rec;
+
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(477px, 1fr));
+  align-items: center;
+  justify-items: center;
 }

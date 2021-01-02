@@ -18,7 +18,7 @@
   padding: var(--padding-default);
 }
 
-@media (max-device-width: 400px) {
+@media (max-width: 400px) {
   .home-page {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 3fr;
@@ -33,7 +33,7 @@
   }
 }
 
-@media (max-device-width: 800px) {
+@media (max-width: 800px) {
   .home-page {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 2fr;
@@ -48,7 +48,7 @@
   }
 }
 
-@media (min-device-width: 801px) {
+@media (min-width: 801px) {
   .home-page {
     grid-template-columns: 1fr 3fr 2fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;

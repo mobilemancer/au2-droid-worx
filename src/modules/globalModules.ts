@@ -5,3 +5,5 @@ export * from "./legends/components/image/image-part";
 export * from "./legends/components/stats/stats-part";
 
 export * from "./products/products-page";
+
+export * from "./about/about-page";
