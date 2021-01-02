@@ -61,12 +61,13 @@
 
 @media (min-width: 801px) {
   .about-page {
-    grid-template-columns: 1fr 3fr 2fr 1fr;
+    grid-template-columns: 1fr min-content 2fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
       ". . . ."
-      ". text image ."
+      ". image text ."
       ". . . .";
+    gap: calc(3 * var(--padding-default));
   }
 
   .about-page .header {
