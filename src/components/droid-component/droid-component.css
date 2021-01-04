@@ -30,25 +30,30 @@ article {
   grid-area: lower-left;
   margin-top: auto;
   font-family: var(--font-family--header);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: var(--color--primary-bright-foreground-de-emphasize);
+
 }
 
 .model {
   font-size: 48pt;
   line-height: 52pt;
-  color: var(--color--primary-bright-foreground-de-emphasize);
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  /* color: var(--color--primary-bright-foreground-de-emphasize); */
+  /* text-overflow: ellipsis; */
+  /* overflow: hidden; */
+  /* white-space: nowrap; */
   width: 400px;
 }
 
 .manufacturer {
   font-size: 28pt;
   line-height: 32pt;
-  color: var(--color--primary-bright-foreground-de-emphasize);
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  /* color: var(--color--primary-bright-foreground-de-emphasize); */
+  /* text-overflow: ellipsis; */
+  /* overflow: hidden; */
+  /* white-space: nowrap; */
   width: 400px;
 }
 
@@ -80,4 +85,66 @@ article {
 .price .amount {
   margin-top: 14px;
   font-size: x-large;
+}
+
+@media (max-width: 400px)  {
+  article {
+    width: 90%;
+    height: 90%;
+  }
+
+  .droid-component {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px min-content 1fr;
+    grid-template-areas: "upper" "middle" "lower";
+    padding:  var(--padding-default);
+  }
+
+  .image-info-card {
+    grid-area: upper;
+    margin-top: var(--padding-small);
+    font-family: var(--font-family--header);
+  }
+
+  .droid-component img {
+    grid-area: middle;
+    max-width: 12rem;
+    max-height: 12rem;
+    margin: auto;
+  }
+
+  .price {
+    grid-area: lower;
+    display: flex;
+    margin-left: auto;
+    margin-top: auto;
+    font-family: var(--font-family--header);
+    flex-direction: column;
+  }
+
+  .price button {
+    margin-bottom: var(--padding-default);
+    color: green;
+  }
+  
+  .price img {
+    vertical-align: middle;
+    height: 30px;
+  }
+  
+  .price .amount {
+    margin-top: 14px;
+    font-size: medium;
+  }
+  
+.model {
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
+.manufacturer {
+  font-size: 2rem;
+  line-height: 2rem;
+}
 }

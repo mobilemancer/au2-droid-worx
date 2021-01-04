@@ -3,16 +3,18 @@
     <product-filter filtered-products.from-view="filteredProducts"></product-filter>
   </div>
 
-  <div class="products">
+  <div class="loading-indicator" if.bind="filteredProducts.length === 0">
+    <loading-indicator></loading-indicator>
+  </div>
+
+  <div class="products" if.bind="filteredProducts.length > 0">
     <div repeat.for="product of filteredProducts">
       <droid-component droid.bind="product"></droid-component>
     </div>
   </div>
 
   <div class="recommendations">
-    <product-recommendation
-      repeat.for="recommendation of productRecommendations"
-      item.bind="recommendation"
-    ></product-recommendation>
+    <product-recommendation repeat.for="recommendation of productRecommendations" item.bind="recommendation">
+    </product-recommendation>
   </div>
 </div>
