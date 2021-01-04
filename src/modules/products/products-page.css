@@ -4,6 +4,11 @@
   display: grid;
 }
 
+.loading-indicator {
+  display: grid;
+  place-items: center;
+}
+
 .products {
   height: 100%;
   display: flex;
