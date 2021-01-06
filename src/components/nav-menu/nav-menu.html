@@ -6,7 +6,7 @@
   alt="menu icon"
 />
 
-<div class="menu" ref="menu">
+<div class="menu-expanded">
   <nav>
     <a load="home-page@main-viewport">Home</a>
     <a load="products-page@main-viewport">Products</a>
@@ -15,4 +15,18 @@
   </nav>
 </div>
 
-<img class="cart-icon" src="../content/icons/shopping_cart.svg" alt="Shopping Cart" click.trigger="toggleShoppingCart()" />
+<div class="menu-condensed" ref="menu" click.delegate="menuClicked()">
+  <nav>
+    <a load="home-page@main-viewport">Home</a>
+    <a load="products-page@main-viewport">Products</a>
+    <a load="legends-page@main-viewport">Legends</a>
+    <a load="about-page@main-viewport">About</a>
+  </nav>
+</div>
+
+<img
+  class="cart-icon"
+  src="../content/icons/shopping_cart.svg"
+  alt="Shopping Cart"
+  click.trigger="toggleShoppingCart()"
+/>

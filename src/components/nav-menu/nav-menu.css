@@ -27,6 +27,10 @@ nav a {
 }
 
 @media (max-width: 800px) {
+  :root {
+    --menu-display-mode: none;
+  }
+
   nav-menu {
     grid-template-columns: 1fr auto;
     justify-content: space-between;
@@ -38,8 +42,8 @@ nav a {
     height: var(--menu-height);
   }
 
-  .menu {
-    display: none;
+  .menu-condensed {
+    display: var(--menu-display-mode);
     position: absolute;
     top: var(--menu-height);
     left: 0;
@@ -57,6 +61,10 @@ nav a {
   .menu-icon {
     display: block;
   }
+
+  .menu-expanded {
+    display: none;
+  }
 }
 
 @media (min-width: 801px) {
@@ -65,7 +73,16 @@ nav a {
     justify-content: space-between;
   }
 
+  .menu-expanded {
+    display: block;
+  }
+
+  /* hide the small screen menu icon and menu  */
   .menu-icon {
+    display: none;
+  }
+
+  .menu-condensed {
     display: none;
   }
 }
