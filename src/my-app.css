@@ -70,22 +70,48 @@ h6 {
   color: var(--color--primary-dark-foreground);
 }
 
-:global .cart {
-  display: none;
-  position: absolute;
-  background-color: aliceblue;
-  border: 5px solid green;
-  width: var(--cart-width);
-  height: var(--cart-height);
-  transition: right 0.2s linear;
-}
-
-:global .cart-open {
-  right: 0px;
-}
-
 :global .cart-closed {
   right: var(--cart-hidden-offset);
+}
+
+@media (max-width: 800px) {
+  :global .cart {
+    display: block;
+    position: absolute;
+    background-color: aliceblue;
+    width: 100vw;
+    height: calc(100vh - var(--menu-height));
+    transition: right 0.2s linear;
+  }
+  
+  :global .cart-open {
+    display: block;
+  }
+
+  :global .cart-closed {
+    display: none;
+  }
+}
+
+@media (min-width: 801px) {
+  :global .cart {
+    display: block;
+    position: absolute;
+    right: 0px;
+    background-color: aliceblue;
+    border: 5px solid green;
+    width: var(--cart-width);
+    height: var(--cart-height);
+    transition: right 0.2s linear;
+  }
+
+  :global .cart-open {
+    right: 0px;
+  }
+
+  :global .cart-closed {
+    right: var(--cart-hidden-offset);
+  }
 }
 
 :global #full-page {
@@ -97,7 +123,9 @@ h6 {
   height: calc(100vh - var(--menu-height));
   overflow: auto;
   display: grid;
-  grid-template-columns: var(--padding-columns) minmax(0, 1fr) var(--padding-columns);
+  grid-template-columns: var(--padding-columns) minmax(0, 1fr) var(
+      --padding-columns
+    );
   grid-template-rows: auto;
   grid-template-areas: "left-column center-column right-column";
 }
@@ -127,23 +155,27 @@ h6 {
 
 :global .raised-l {
   border-radius: 16px;
-  box-shadow: var(--raised-l-top-offset) var(--raised-l-top-offset) var(--raised-l-top-blur)
-      var(--raised-top-color),
-    var(--raised-l-bottom-offset) var(--raised-l-bottom-offset) var(--raised-l-bottom-blur)
-      var(--raised-bottom-color);
+  box-shadow: var(--raised-l-top-offset) var(--raised-l-top-offset)
+      var(--raised-l-top-blur) var(--raised-top-color),
+    var(--raised-l-bottom-offset) var(--raised-l-bottom-offset)
+      var(--raised-l-bottom-blur) var(--raised-bottom-color);
   padding: 20px;
 }
 
 :global .raised-m {
   border-radius: 10px;
-  box-shadow: var(--raised-m-top-offset) var(--raised-m-top-offset) var(--raised-m-top-blur) #adadad,
-    var(--raised-m-bottom-offset) var(--raised-m-bottom-offset) var(--raised-m-bottom-blur) #ffffff;
+  box-shadow: var(--raised-m-top-offset) var(--raised-m-top-offset)
+      var(--raised-m-top-blur) #adadad,
+    var(--raised-m-bottom-offset) var(--raised-m-bottom-offset)
+      var(--raised-m-bottom-blur) #ffffff;
 }
 
 :global .raised-s {
   border-radius: 5px;
-  box-shadow: var(--raised-s-top-offset) var(--raised-s-top-offset) var(--raised-s-top-blur) #868686,
-    var(--raised-s-bottom-offset) var(--raised-s-bottom-offset) var(--raised-s-bottom-blur) #ffffff;
+  box-shadow: var(--raised-s-top-offset) var(--raised-s-top-offset)
+      var(--raised-s-top-blur) #868686,
+    var(--raised-s-bottom-offset) var(--raised-s-bottom-offset)
+      var(--raised-s-bottom-blur) #ffffff;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
