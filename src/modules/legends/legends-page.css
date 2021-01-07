@@ -36,3 +36,7 @@ a {
 .stats {
   grid-area: lower-right;
 }
+
+@media (max-width: 700px) {
+  
+}
