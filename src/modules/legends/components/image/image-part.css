@@ -1,4 +1,5 @@
 .legend {
+  /* TODO: fix */
   height: calc(100% - 2 * var(--padding-default));
   padding: var(--padding-default);
   display: flex;
