@@ -87,7 +87,9 @@
 
   .images {
     grid-area: image;
+    max-height: 20rem;
   }
+
 
   .stats {
     grid-area: stats;

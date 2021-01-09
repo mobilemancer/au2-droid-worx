@@ -18,7 +18,7 @@
   }
 
   .stats {
-    overflow-y: none;
+    overflow-y: scroll;
     /* height: calc(100% - var(--heading-height-small)); */
   }
 

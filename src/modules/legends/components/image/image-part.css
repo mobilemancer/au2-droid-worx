@@ -1,6 +1,7 @@
 .legend {
-  /* TODO: fix */
-  height: calc(100% - 2 * var(--padding-default));
+  max-height: calc(100% - 2 * var(--padding-default));
+  /* width: calc(100% - 2 * var(--padding-default)); */
+  width: auto;
   padding: var(--padding-default);
   display: flex;
   margin: auto;
