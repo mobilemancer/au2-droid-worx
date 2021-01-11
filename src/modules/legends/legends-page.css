@@ -1,3 +1,14 @@
+legends-page ul {
+  list-style-type: none;
+  padding: 0px;
+
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+}
+
 @media (min-width: 701px) {
   .container {
     height: calc(100vh - var(--menu-height));
@@ -41,11 +52,11 @@
 
 @media (max-width: 700px) {
   .container {
-    max-height: calc(100vh - var(--menu-height));
+    height: calc(100vh - var(--menu-height));
     overflow: hidden;
     display: grid;
-    grid-template-columns: 30% 70%;
-    grid-template-rows: min-content auto min-content;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: min-content auto minmax(5rem, auto);
     grid-template-areas:
       "heading heading"
       "list image"
@@ -53,17 +64,8 @@
   }
 
   legends-page h1 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: var(--padding-default) 0 0 var(--padding-default);
-  }
-
-  legends-page ul {
-    list-style-type: none;
-    padding: 0px;
-  }
-
-  legends-page li {
-    list-style: none;
   }
 
   .list-heading {
@@ -75,21 +77,21 @@
     grid-area: list;
   }
 
-  .legend {
-    list-style: none;
-  }
-
   a {
     display: inline-block;
     color: var(--color--primary-bright-foreground);
     text-decoration: none;
   }
 
-  .images {
-    grid-area: image;
-    max-height: 20rem;
+  .name {
+    font-size: 1rem;
+    margin: var(--padding-default) 0 0 var(--padding-default);
   }
 
+  .images {
+    grid-area: image;
+    max-height: 18rem;
+  }
 
   .stats {
     grid-area: stats;

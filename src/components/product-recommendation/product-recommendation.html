@@ -1,10 +1,10 @@
-<div class="product-recommendation" click.trigger="filterProduct(item.productName)" ;>
+<div class="product-recommendation" click.trigger="filterProduct(recommendation.productName)" ;>
   <img src.bind="imgSource" />
 
-  <div class="product-name">${item.productName}</div>
+  <div class="product-name">${recommendation.productName}</div>
 
   <blockquote>
-    ${item.quote}
-    <div class="user">- <em>${item.user}</em></div>
+    ${recommendation.quote}
+    <div class="user">- <em>${recommendation.user}</em></div>
   </blockquote>
 </div>
