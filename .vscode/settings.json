@@ -24,5 +24,6 @@
   "azureFunctions.projectRuntime": "~3",
   "debug.internalConsoleOptions": "neverOpen",
   "azureFunctions.preDeployTask": "publish",
-  "azureFunctions.templateFilter": "All"
+  "azureFunctions.templateFilter": "All",
+  "editor.formatOnSave": true
 }

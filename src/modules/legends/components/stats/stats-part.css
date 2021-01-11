@@ -1,42 +1,91 @@
-.container {
-  display: block;
-  height: 100%;
-  border-left: 2px solid black;
-  border-top: 2px solid black;
-  border-right: 2px solid black;
-}
-
-.header {
-  border-bottom: 1px solid black;
-  background-color: var(--color--primary-dark-background);
-  color: var(--color--primary-dark-foreground);
-  height: var(--menu-height);
-}
-
-.stats {
-  overflow-y: scroll;
-  height: calc(100% - var(--menu-height));
-}
-
 .heading {
   font-family: var(--font-family--header);
   padding: var(--padding-default);
 }
 
-.stat-row {
-  border-bottom: 1px solid black;
-}
-
 .label {
-  font-family: var(--font-family--header);
-  padding: var(--padding-default);
-  border-right: 1px solid black;
-  width: 200px;
-  display: inline-block;
-  text-transform: uppercase;
+  font-family: var(--font-family--normal);
 }
 
 .value {
   font-family: var(--font-family--header);
   padding: var(--padding-default);
+  padding-top: 0px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    display: block;
+    height: 100%;
+    border-top: 2px solid black;
+  }
+
+  .header {
+    border-bottom: 1px solid black;
+    background-color: var(--color--primary-dark-background);
+    color: var(--color--primary-dark-foreground);
+    height: var(--heading-height-small);
+  }
+
+  .heading {
+    padding: var(--padding-small);
+  }
+
+  .stats {
+    height: calc(100% - var(--heading-height-small));
+    overflow-y: auto;
+  }
+
+  .stat-row {
+    border-bottom: 1px solid black;
+  }
+
+  .label {
+    padding: var(--padding-small) var(--padding-small) 0px var(--padding-small);
+    display: block;
+    color: var(--color--primary-bright-foreground-de-emphasize);
+  }
+
+  .value {
+    display: block;
+    padding: var(--padding-small);
+  }
+}
+
+@media (min-width: 701px) {
+  .container {
+    display: block;
+    height: 100%;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+  }
+
+  .header {
+    border-bottom: 1px solid black;
+    background-color: var(--color--primary-dark-background);
+    color: var(--color--primary-dark-foreground);
+    height: var(--menu-height);
+  }
+
+  .stats {
+    overflow-y: scroll;
+    height: calc(100% - var(--menu-height));
+  }
+
+  .stat-row {
+    border-bottom: 1px solid black;
+  }
+
+  .label {
+    padding: var(--padding-default);
+    border-right: 1px solid black;
+    width: 200px;
+    display: inline-block;
+    text-transform: uppercase;
+  }
+
+  .value {
+    padding: var(--padding-default);
+  }
 }

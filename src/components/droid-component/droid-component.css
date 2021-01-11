@@ -1,16 +1,5 @@
-article {
-  display: inline-block;
-  width: 650px;
-  color: var(--color--primary-bright-foreground);
-  padding-top: var(--padding-default);
-  padding-bottom: calc(3 * var(--padding-default));
-  padding-right: calc(3 * var(--padding-default));
-  height: calc(100% - 4 * var(--padding-default));
-}
-
 .droid-component {
   background-color: var(--color--primary-dark-foreground-emphasize);
-  height: calc(100% - 3 * var(--padding-default));
   padding: calc(2 * var(--padding-default));
   display: grid;
   grid-template-columns: 55% 45%;
@@ -34,26 +23,17 @@ article {
   text-overflow: ellipsis;
   overflow: hidden;
   color: var(--color--primary-bright-foreground-de-emphasize);
-
 }
 
 .model {
   font-size: 48pt;
   line-height: 52pt;
-  /* color: var(--color--primary-bright-foreground-de-emphasize); */
-  /* text-overflow: ellipsis; */
-  /* overflow: hidden; */
-  /* white-space: nowrap; */
   width: 400px;
 }
 
 .manufacturer {
   font-size: 28pt;
   line-height: 32pt;
-  /* color: var(--color--primary-bright-foreground-de-emphasize); */
-  /* text-overflow: ellipsis; */
-  /* overflow: hidden; */
-  /* white-space: nowrap; */
   width: 400px;
 }
 
@@ -87,18 +67,18 @@ article {
   font-size: x-large;
 }
 
-@media (max-width: 400px)  {
+@media (max-width: 400px) {
   article {
-    width: 90%;
-    height: 90%;
+    width: calc(100vw - 3 * var(--padding-default));
+    padding: var(--padding-default);
   }
 
   .droid-component {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 100px min-content 1fr;
+    grid-template-rows: 5rem 15rem 3rem;
     grid-template-areas: "upper" "middle" "lower";
-    padding:  var(--padding-default);
+    padding: var(--padding-default);
   }
 
   .image-info-card {
@@ -117,34 +97,57 @@ article {
   .price {
     grid-area: lower;
     display: flex;
-    margin-left: auto;
+    /* margin-left: auto; */
     margin-top: auto;
     font-family: var(--font-family--header);
-    flex-direction: column;
+    flex-direction: row-reverse;
   }
 
   .price button {
     margin-bottom: var(--padding-default);
     color: green;
   }
-  
+
   .price img {
     vertical-align: middle;
     height: 30px;
   }
-  
+
   .price .amount {
     margin-top: 14px;
     font-size: medium;
+    padding-right: 50px;
   }
-  
-.model {
-  font-size: 3rem;
-  line-height: 3rem;
+
+  .price button {
+    margin-bottom: 0px;
+    margin-top: 3px;
+    color: green;
+  }
+
+  .model {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  .manufacturer {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
 }
 
-.manufacturer {
-  font-size: 2rem;
-  line-height: 2rem;
-}
+@media (min-width: 401px) {
+  article {
+    display: inline-block;
+    width: 650px;
+    color: var(--color--primary-bright-foreground);
+    padding-top: var(--padding-default);
+    padding-bottom: calc(3 * var(--padding-default));
+    padding-right: calc(3 * var(--padding-default));
+    height: calc(100% - 4 * var(--padding-default));
+  }
+
+  .droid-component {
+    height: calc(100% - 3 * var(--padding-default));
+  }
 }
