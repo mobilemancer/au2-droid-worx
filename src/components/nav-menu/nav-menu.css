@@ -27,8 +27,11 @@ nav a {
 }
 
 @media (max-width: 800px) {
-  :root {
+  /* :root {
     --menu-display-mode: none;
+  } */
+  .menu-expanded {
+    display: none;
   }
 
   nav-menu {
@@ -43,7 +46,7 @@ nav a {
   }
 
   .menu-condensed {
-    display: var(--menu-display-mode);
+    display: var(--menu--condensed-display-mode);
     position: absolute;
     top: var(--menu-height);
     left: 0;
@@ -60,10 +63,6 @@ nav a {
 
   .menu-icon {
     display: block;
-  }
-
-  .menu-expanded {
-    display: none;
   }
 }
 
