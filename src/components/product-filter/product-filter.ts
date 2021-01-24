@@ -17,7 +17,7 @@ export class ProductFilter {
     @IDataService private readonly dataService: DataService,
     @IEventAggregator eventAggregator: EventAggregator
   ) {
-    this.triggerFilter();
+    this.filterProducts();
 
     this.eventListeners.push(
       // this event is triggered by other components, like for ex the Product-Recommendation
@@ -36,7 +36,7 @@ export class ProductFilter {
   @watch((o: ProductFilter) => o.arakyd)
   @watch((o: ProductFilter) => o.cybot)
   @watch((o: ProductFilter) => o.automaton)
-  private triggerFilter() {
+  private filterProducts() {
     this.filteredProducts = this.dataService.filterProducts(this.searchText, {
       arakyd: this.arakyd,
       automaton: this.automaton,

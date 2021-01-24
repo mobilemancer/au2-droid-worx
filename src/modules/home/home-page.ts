@@ -1,4 +1,5 @@
 export class HomePage {
+  public template: HTMLElement;
   public imgSource = "";
 
   private bb8Media = "./../../../content/images/legends/BB-8.png";
@@ -6,6 +7,11 @@ export class HomePage {
 
   constructor() {
     this.imgSource = this.getImageSource();
+  }
+
+  private attached(): void {
+    if (!this?.template) return;
+    this.template.classList.add("anim-enter-right");
   }
 
   private getImageSource(): string {

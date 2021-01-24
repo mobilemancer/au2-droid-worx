@@ -71,6 +71,38 @@ h6 {
   color: var(--color--primary-dark-foreground);
 }
 
+/* animation -> */
+:global .anim-enter-right {
+  animation: fadeInRight 0.5s;
+}
+
+:global .anim-enter-left {
+  animation: fadeInLeft 0.5s;
+}
+
+:global @keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+:global @keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* <- animation */
+
 :global .cart-closed {
   right: var(--cart-hidden-offset);
 }

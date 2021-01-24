@@ -14,5 +14,12 @@ export class MyApp {
         this.cartDiv.classList.add("cart-open");
       }
     });
+
+    eventAggregator.subscribe("close-cart", () => {
+      if (this.cartDiv.classList.contains("cart-open")) {
+        this.cartDiv.classList.remove("cart-open");
+        this.cartDiv.classList.add("cart-closed");
+      }
+    });
   }
 }
