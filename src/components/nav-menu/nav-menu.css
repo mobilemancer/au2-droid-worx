@@ -27,9 +27,9 @@ nav a {
 }
 
 @media (max-width: 800px) {
-  /* :root {
-    --menu-display-mode: none;
-  } */
+  :root {
+    --menu--condensed-display-mode: none;
+  }
   .menu-expanded {
     display: none;
   }
