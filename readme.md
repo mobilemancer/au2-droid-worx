@@ -2,7 +2,7 @@
 
 This is an Aurelia 2 demo app. It's hosted on Azure Static Web Apps, and uses C# for the API.
 
-Check out the live app [here](https://wonderful-water-0fbf97b03.azurestaticapps.net/).
+Check out the live app [here](https://www.droidworx.dev/).
 
 ## Running The Code
 
