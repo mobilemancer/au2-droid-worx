@@ -12,6 +12,8 @@ export class ShoppingCart {
   private eventListeners: IDisposable[] = [];
 
   constructor(@IEventAggregator private eventAggregator: EventAggregator) {
+    console.log("shopping-cart constructor ran");
+
     this.eventListeners.push(
       eventAggregator.subscribe("add-item", (product: Record<string, unknown>) => {
         const prod = this.cart.filter((p) => p.productName === product.model);

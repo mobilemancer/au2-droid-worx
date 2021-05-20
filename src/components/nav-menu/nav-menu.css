@@ -1,5 +1,6 @@
 nav-menu {
   display: grid;
+  height: var(--menu-height);
 }
 
 nav-menu img {
@@ -26,10 +27,15 @@ nav a {
   height: 100%;
 }
 
+.cart-icon {
+  display: block;
+  height: calc(var(--menu-height) - 2 * var(--padding-small));
+}
+
 @media (max-width: 800px) {
-  /* :root {
-    --menu-display-mode: none;
-  } */
+  :root {
+    --menu--condensed-display-mode: none;
+  }
   .menu-expanded {
     display: none;
   }
