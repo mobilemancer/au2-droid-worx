@@ -1,4 +1,5 @@
-import Aurelia, { RouterConfiguration, Registration } from "aurelia";
+import Aurelia, { Registration } from "aurelia";
+import { RouterConfiguration } from "aurelia-direct-router";
 
 import { MyApp } from "./my-app";
 
@@ -11,7 +12,6 @@ import * as ValueConverters from "./value-converters/globalValueConverters";
 Aurelia.register(
   RouterConfiguration.customize({ useUrlFragmentHash: true, title: "Doop's Droid Emporium" }),
   Registration.singleton(IDataService, DataService),
-
   Modules,
   Components,
   ValueConverters
