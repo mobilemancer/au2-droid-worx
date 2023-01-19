@@ -16,7 +16,11 @@
     "titleBar.activeBackground": "#567ab7",
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#567ab799",
-    "titleBar.inactiveForeground": "#e7e7e799"
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#7a96c6",
+    "statusBarItem.remoteBackground": "#567ab7",
+    "statusBarItem.remoteForeground": "#e7e7e7"
   },
   "peacock.color": "#567ab7",
   "azureFunctions.deploySubpath": "api/bin/Release/netcoreapp3.1/publish",

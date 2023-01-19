@@ -10,19 +10,19 @@ using System.Text.Json;
 
 namespace mobilemancer.DroidWorx.Products
 {
-  public static class GetLegends
-  {
-    [FunctionName(nameof(GetLegends))]
-    public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "product/legends")] HttpRequest req,
-        ExecutionContext context,
-        ILogger log)
+    public static class GetLegends
     {
-      log.LogInformation($"{nameof(GetLegends)} function processed a request.");
+        [FunctionName(nameof(GetLegends))]
+        public static async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "product/legends")] HttpRequest req,
+            ExecutionContext context,
+            ILogger log)
+        {
+            log.LogInformation($"{nameof(GetLegends)} function processed a request.");
 
-      var data = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "legends.json"));
-      var legends = JsonSerializer.Deserialize<IEnumerable<Legend>>(data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-      return new OkObjectResult(legends);
+            var data = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "legends.json"));
+            var legends = JsonSerializer.Deserialize<IEnumerable<Legend>>(data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return new OkObjectResult(legends);
+        }
     }
-  }
 }
