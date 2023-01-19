@@ -23,7 +23,7 @@
       <div class="product" click.trigger="filterProduct(item.productName)">${item.productName}</div>
 
       <div class="quantity">
-        <input type="number" min="1" value.bind="item.qty" change.trigger="calculateTotalPrice()"></input>
+        <input type="number" min="1" step="1" value.bind="item.qty" keydown.trigger="isNumberKey($event)"  change.trigger="calculateTotalPrice()"></input>
       </div>
 
       <div class="price">${item.price}</div>
@@ -32,6 +32,6 @@
 
   <div class="footer">
     <div class="total">Total</div>
-    <div class="total-price">${totalPrice}</div>
+    <i class="total-price"><img class="credits" src="../../../content/icons/republic_credit.svg" />${totalPrice}</div>
   </div>
 </div>

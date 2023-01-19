@@ -12,8 +12,6 @@ export class ShoppingCart {
   private eventListeners: IDisposable[] = [];
 
   constructor(@IEventAggregator private eventAggregator: EventAggregator) {
-    console.log("shopping-cart constructor ran");
-
     this.eventListeners.push(
       eventAggregator.subscribe("add-item", (product: Record<string, unknown>) => {
         const prod = this.cart.filter((p) => p.productName === product.model);
@@ -49,9 +47,17 @@ export class ShoppingCart {
     this.eventAggregator.publish("filter", model);
   }
 
+  public isNumberKey(evt: KeyboardEvent): boolean {
+    if (evt.key === "," || evt.key === ".") return false; // dissalow comma separators
+    if (evt.key === "-" || evt.key === "+") return false; // dissalow pos and neg signs
+    if (evt.key === "e") return false;  // disallow exponentials
+    return true;
+  }
+
   private getImageLink(product: string): string {
     if (!product || product === "") return "";
     const fileName = product.replace(/\s/g, "_") + ".png";
     return "./../../../../../content/images/products/" + fileName;
   }
+
 }

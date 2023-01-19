@@ -43,8 +43,6 @@
   text-shadow: 2px 2px 10px #000000;
 }
 
-
-
 .header {
   display: grid;
   grid-template-columns: 0.5fr 1fr 1fr 1fr;
@@ -111,8 +109,13 @@
   grid-area: total;
 }
 
+.footer .credits {
+  height: 20px;
+}
+
 .footer .total-price {
   grid-area: price;
   display: flex;
   justify-content: flex-end;
+  padding-right: var(--padding-small);
 }
