@@ -8,13 +8,13 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "aurelia": "dev",
-    "aurelia-direct-router": "*"
+    "aurelia": "latest",
+    "@aurelia/router": "latest"
   },
   "devDependencies": {
-    "@aurelia/plugin-gulp": "dev",
-    "@aurelia/testing": "dev",
-    "@aurelia/ts-jest": "dev",
+    "@aurelia/plugin-gulp": "latest",
+    "@aurelia/testing": "latest",
+    "@aurelia/ts-jest": "latest",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.3.0",
     "@typescript-eslint/eslint-plugin": "^4.23.0",

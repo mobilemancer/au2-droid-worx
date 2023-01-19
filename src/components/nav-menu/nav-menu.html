@@ -6,7 +6,7 @@
   alt="menu icon"
 />
 
-<div class="menu-expanded" click.delegate="menuClicked()">
+<div class="menu-expanded" click.trigger="menuClicked()">
   <nav>
     <a load="home-page@main-viewport">Home</a>
     <a load="products-page@main-viewport">Products</a>
@@ -15,7 +15,7 @@
   </nav>
 </div>
 
-<div class="menu-condensed" ref="menu" click.delegate="menuClicked()">
+<div class="menu-condensed" ref="menu" click.trigger="menuClicked()">
   <nav>
     <a load="home-page@main-viewport">Home</a>
     <a load="products-page@main-viewport">Products</a>

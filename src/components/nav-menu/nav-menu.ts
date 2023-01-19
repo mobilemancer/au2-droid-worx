@@ -5,7 +5,7 @@ export class NavMenu {
 
   private readonly menuCondensedDisplayMode = "--menu--condensed-display-mode";
 
-  constructor(@IEventAggregator private eventAggregator: EventAggregator) {}
+  constructor(@IEventAggregator private eventAggregator: EventAggregator) { }
 
   public toggleMenu(): void {
     this.closeShoppingCart();

@@ -1,4 +1,5 @@
-import { bindable, IEventAggregator, EventAggregator, IDisposable, watch } from "aurelia";
+import { bindable, IEventAggregator, EventAggregator, IDisposable } from "aurelia";
+import { watch } from '@aurelia/runtime-html';
 
 import { DataService, IDataService } from "./../../services/dataService";
 import { IDroid } from "./../../common/IDroid";
