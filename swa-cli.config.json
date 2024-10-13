@@ -1,0 +1,13 @@
+{
+  "$schema": "https://aka.ms/azure/static-web-apps-cli/schema",
+  "configurations": {
+    "au2-droid-worx": {
+      "appLocation": ".",
+      "apiLocation": "api",
+      "outputLocation": ".",
+      "apiLanguage": "dotnetisolated",
+      "apiVersion": "6.0",
+      "apiBuildCommand": "dotnet publish -c Release"
+    }
+  }
+}
