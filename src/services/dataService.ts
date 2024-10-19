@@ -24,13 +24,13 @@ export class DataService {
   }
 
   private async init() {
-    const products = ((await this.requestData("product")) as unknown) as IDroid[];
+    const products = ((await this.requestData("Products")) as unknown) as IDroid[];
     this.products.push(...products);
 
-    const legends = ((await this.requestData("product/legends")) as unknown) as ILegend[];
+    const legends = ((await this.requestData("Legends")) as unknown) as ILegend[];
     this.legends.push(...legends);
 
-    const recommendations = await this.requestData("product/recommendations");
+    const recommendations = await this.requestData("ProductRecommendations");
     this.productRecommendations.push(...recommendations);
   }
 

@@ -14,7 +14,7 @@ namespace mobilemancer.DroidWorx.Products
   {
     [FunctionName(nameof(GetProducts))]
     public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "product")] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "Products")] HttpRequest req,
         ExecutionContext context,
         ILogger log)
     {
