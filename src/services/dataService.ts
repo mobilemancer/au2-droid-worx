@@ -5,6 +5,9 @@ import { IFilterProperties } from "./../common/IFilterProperties";
 import { IDroid } from "./../common/IDroid";
 import { ILegend } from "../common/ILegend";
 
+const apiBaseUrl = "http://localhost:5000";
+// const apiBaseUrl = "http://localhost:7071";
+
 export class DataService {
   public legends: ILegend[] = [];
   public products: IDroid[] = [];
@@ -81,12 +84,16 @@ export class DataService {
 
   private async requestData(route: string): Promise<Record<string, unknown>[]> {
     const response = await this.httpClient.fetch(route);
-    return await response.json();
+    const values = await response.json();
+    if (values?.value) {
+      return values.value;
+    }
+    return values;
   }
 
   private getBaseUrl() {
     if (window.location.hostname.includes("localhost")) {
-      return "http://localhost:7071/api/";
+      return apiBaseUrl + "/api/";
     } else return window.origin + "/api/";
   }
 }
