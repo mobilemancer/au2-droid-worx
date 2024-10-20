@@ -106,7 +106,7 @@ export class DataService {
   private getBaseUrl() {
     if (window.location.hostname.includes("localhost")) {
       return apiBaseUrl + "/api/";
-    } else return window.origin + "data-api/api/";
+    } else return window.origin + "/data-api/api/";
   }
 }
 
