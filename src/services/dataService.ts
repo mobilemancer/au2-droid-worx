@@ -5,8 +5,8 @@ import { IFilterProperties } from "./../common/IFilterProperties";
 import { IDroid } from "./../common/IDroid";
 import { ILegend } from "../common/ILegend";
 
-const apiBaseUrl = "http://localhost:5000";
-// const apiBaseUrl = "http://localhost:7071";
+// const apiBaseUrl = "http://localhost:5000";
+const apiBaseUrl = "http://localhost:7071";
 
 export class DataService {
   public legends: ILegend[] = [];
