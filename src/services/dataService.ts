@@ -15,7 +15,10 @@ export class DataService {
 
   constructor(@IHttpClient private readonly httpClient: HttpClient) {
     const config = new HttpClientConfiguration();
-    const headers: HeadersInit = { Accept: "application/json", "X-Requested-With": "Fetch" };
+    const headers: HeadersInit = {
+      Accept: "application/json",
+      "X-Requested-With": "Fetch",
+    };
     config.withDefaults({
       credentials: "same-origin",
       headers: headers,
@@ -27,10 +30,12 @@ export class DataService {
   }
 
   private async init() {
-    const products = ((await this.requestData("Products")) as unknown) as IDroid[];
+    const products = (await this.requestData(
+      "Products"
+    )) as unknown as IDroid[];
     this.products.push(...products);
 
-    const legends = ((await this.requestData("Legends")) as unknown) as ILegend[];
+    const legends = (await this.requestData("Legends")) as unknown as ILegend[];
     this.legends.push(...legends);
 
     const recommendations = await this.requestData("ProductRecommendations");
@@ -47,7 +52,10 @@ export class DataService {
     })[0];
   }
 
-  public filterProducts(fragment: string, filterProps: IFilterProperties): IDroid[] {
+  public filterProducts(
+    fragment: string,
+    filterProps: IFilterProperties
+  ): IDroid[] {
     const res = this.filterByText(fragment)?.filter((d) => {
       return (
         (filterProps.arakyd && d.manufacturer.includes("Arakyd")) ||
@@ -63,9 +71,10 @@ export class DataService {
 
     const results = [];
     do {
-      const item = this.productRecommendations[
-        Math.floor(Math.random() * this.productRecommendations.length)
-      ];
+      const item =
+        this.productRecommendations[
+          Math.floor(Math.random() * this.productRecommendations.length)
+        ];
       if (results.indexOf(item) < 0) results.push(item);
     } while (results.length < this.productRecommendations.length);
     return results;
@@ -77,7 +86,10 @@ export class DataService {
     } else {
       fragment = fragment.toLowerCase();
       return this.products.filter((d) => {
-        return d.droidClass.toLowerCase().includes(fragment) || d.model.toLowerCase().includes(fragment);
+        return (
+          d.droidClass.toLowerCase().includes(fragment) ||
+          d.model.toLowerCase().includes(fragment)
+        );
       });
     }
   }
@@ -94,7 +106,7 @@ export class DataService {
   private getBaseUrl() {
     if (window.location.hostname.includes("localhost")) {
       return apiBaseUrl + "/api/";
-    } else return window.origin + "/api/";
+    } else return window.origin + "data-api/api/";
   }
 }
 
