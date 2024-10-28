@@ -6,7 +6,10 @@ import { IDroid } from "./../common/IDroid";
 import { ILegend } from "../common/ILegend";
 
 // const apiBaseUrl = "http://localhost:5000";
+// const dataApiBaseUrl = "/data-api/api/";
+
 const apiBaseUrl = "http://localhost:7071";
+const dataApiBaseUrl = "/api/";
 
 export class DataService {
   public legends: ILegend[] = [];
@@ -106,7 +109,7 @@ export class DataService {
   private getBaseUrl() {
     if (window.location.hostname.includes("localhost")) {
       return apiBaseUrl + "/api/";
-    } else return window.origin + "/data-api/api/";
+    } else return window.origin + dataApiBaseUrl;
   }
 }
 
