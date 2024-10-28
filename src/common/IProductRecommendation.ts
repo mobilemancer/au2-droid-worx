@@ -1,5 +1,5 @@
 export interface IProductRecommendation {
   productName: string;
-  user: string;
+  userName: string;
   quote: string;
 }
