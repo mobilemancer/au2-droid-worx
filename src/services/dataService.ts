@@ -5,8 +5,8 @@ import { IFilterProperties } from "./../common/IFilterProperties";
 import { IDroid } from "./../common/IDroid";
 import { ILegend } from "../common/ILegend";
 
-const apiBaseUrl = "http://localhost:5000";
-// const apiBaseUrl = "http://localhost:7071";
+// const apiBaseUrl = "http://localhost:5000";
+const apiBaseUrl = "http://localhost:7071";
 
 export class DataService {
   public legends: ILegend[] = [];
@@ -73,7 +73,7 @@ export class DataService {
     do {
       const item =
         this.productRecommendations[
-          Math.floor(Math.random() * this.productRecommendations.length)
+        Math.floor(Math.random() * this.productRecommendations.length)
         ];
       if (results.indexOf(item) < 0) results.push(item);
     } while (results.length < this.productRecommendations.length);
