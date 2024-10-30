@@ -3,11 +3,11 @@
   "configurations": {
     "au2-droid-worx": {
       "appLocation": "dist",
-      "apiLocation": "api",
+      "apiLocation": "",
       "outputLocation": ".",
-      "apiLanguage": "dotnetisolated",
-      "apiVersion": "6.0",
-      "apiBuildCommand": "dotnet publish -c Release"
+      "apiLanguage": "",
+      "apiVersion": "",
+      "apiBuildCommand": ""
     }
   }
 }
