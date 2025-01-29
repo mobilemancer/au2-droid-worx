@@ -27,6 +27,7 @@ export class ShoppingCart {
         }
 
         this.calculateTotalPrice();
+        this.publishCartUpdatedEvent();
       })
     );
   }
@@ -60,4 +61,8 @@ export class ShoppingCart {
     return "./../../../../../content/images/products/" + fileName;
   }
 
+  private publishCartUpdatedEvent(): void {
+    const itemCount = this.cart.reduce((count, item) => count + item.qty, 0);
+    this.eventAggregator.publish("cart-updated", itemCount);
+  }
 }

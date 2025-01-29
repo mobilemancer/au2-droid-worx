@@ -2,10 +2,15 @@ import { IEventAggregator, EventAggregator } from "aurelia";
 
 export class NavMenu {
   public menu: HTMLElement;
+  public cartPill: HTMLElement;
 
   private readonly menuCondensedDisplayMode = "--menu--condensed-display-mode";
 
-  constructor(@IEventAggregator private eventAggregator: EventAggregator) { }
+  constructor(@IEventAggregator private eventAggregator: EventAggregator) {
+    this.eventAggregator.subscribe("cart-updated", (itemCount: number) => {
+      this.updateCartPill(itemCount);
+    });
+  }
 
   public toggleMenu(): void {
     this.closeShoppingCart();
@@ -39,5 +44,13 @@ export class NavMenu {
 
   private closeCondensedMenu() {
     document.documentElement.style.setProperty(this.menuCondensedDisplayMode, "none");
+  }
+
+  private updateCartPill(itemCount: number): void {
+    if (this.cartPill) {
+      this.cartPill.textContent = itemCount.toString();
+      this.cartPill.classList.add("pulse");
+      setTimeout(() => this.cartPill.classList.remove("pulse"), 500);
+    }
   }
 }

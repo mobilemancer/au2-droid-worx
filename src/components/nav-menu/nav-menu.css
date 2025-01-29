@@ -32,6 +32,34 @@ nav a {
   height: calc(var(--menu-height) - 2 * var(--padding-small));
 }
 
+.cart-pill {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  background-color: var(--color--primary-dark-background);
+  color: var(--color--primary-dark-foreground);
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @media (max-width: 800px) {
   :root {
     --menu--condensed-display-mode: none;
