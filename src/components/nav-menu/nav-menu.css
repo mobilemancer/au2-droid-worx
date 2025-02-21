@@ -32,10 +32,30 @@ nav a {
   height: calc(var(--menu-height) - 2 * var(--padding-small));
 }
 
+.cart-container {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-pill {
+  position: absolute;
+  bottom: -8px;
+  left: -8px;
+  background-color: var(--color--primary-ok);
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 12px;
+  min-width: 8px;
+  text-align: center;
+  font-family: var(--font-family--normal);
+}
+
 @media (max-width: 800px) {
   :root {
     --menu--condensed-display-mode: none;
   }
+
   .menu-expanded {
     display: none;
   }

@@ -2,10 +2,19 @@ import { IEventAggregator, EventAggregator } from "aurelia";
 
 export class NavMenu {
   public menu: HTMLElement;
+  public cartCount = 0;
 
   private readonly menuCondensedDisplayMode = "--menu--condensed-display-mode";
 
-  constructor(@IEventAggregator private eventAggregator: EventAggregator) { }
+  constructor(@IEventAggregator private readonly eventAggregator: EventAggregator) {
+    eventAggregator.subscribe("add-item", () => {
+      this.cartCount++;
+    });
+
+    eventAggregator.subscribe("update-cart-count", (count: number) => {
+      this.cartCount = count;
+    });
+  }
 
   public toggleMenu(): void {
     this.closeShoppingCart();

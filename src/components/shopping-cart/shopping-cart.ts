@@ -11,7 +11,7 @@ export class ShoppingCart {
 
   private eventListeners: IDisposable[] = [];
 
-  constructor(@IEventAggregator private eventAggregator: EventAggregator) {
+  constructor(@IEventAggregator private readonly eventAggregator: EventAggregator) {
     this.eventListeners.push(
       eventAggregator.subscribe("add-item", (product: Record<string, unknown>) => {
         const prod = this.cart.filter((p) => p.productName === product.model);
@@ -37,10 +37,13 @@ export class ShoppingCart {
 
   public calculateTotalPrice(): void {
     let total = 0;
+    let count = 0;
     this.cart.forEach((p) => {
       total = total + p.qty * p.price;
+      count += p.qty;
     });
     this.totalPrice = total;
+    this.eventAggregator.publish("update-cart-count", count);
   }
 
   public filterProduct(model: string): void {

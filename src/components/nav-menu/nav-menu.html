@@ -1,10 +1,5 @@
-<img
-  class="menu-icon"
-  click.trigger="toggleMenu()"
-  src="../content/icons/hamburger-menu.svg"
-  loading="lazy"
-  alt="menu icon"
-/>
+<img class="menu-icon" click.trigger="toggleMenu()" src="../content/icons/hamburger-menu.svg" loading="lazy"
+  alt="menu icon" />
 
 <div class="menu-expanded" click.trigger="menuClicked()">
   <nav>
@@ -24,9 +19,8 @@
   </nav>
 </div>
 
-<img
-  class="cart-icon"
-  src="../content/icons/shopping_cart.svg"
-  alt="Shopping Cart"
-  click.trigger="toggleShoppingCart()"
-/>
+<div class="cart-container">
+  <img class="cart-icon" src="../content/icons/shopping_cart.svg" alt="Shopping Cart"
+    click.trigger="toggleShoppingCart()" />
+  <span if.bind="cartCount > 0" class="cart-pill">${cartCount}</span>
+</div>
