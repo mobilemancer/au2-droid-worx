@@ -1,4 +1,3 @@
-using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -6,22 +5,27 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Text.Json;
+using mobilemancer.DroidWorx.Repositories;
 
 namespace mobilemancer.DroidWorx.Products
 {
-    public static class GetLegends
+    public class GetLegends
     {
+        private readonly ICosmosDbRepository<Legend> _cosmosDbRepository;
+
+        public GetLegends(ICosmosDbRepository<Legend> cosmosDbRepository)
+        {
+            _cosmosDbRepository = cosmosDbRepository;
+        }
+
         [FunctionName(nameof(GetLegends))]
-        public static async Task<IActionResult> Run(
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "Legends")] HttpRequest req,
-            ExecutionContext context,
             ILogger log)
         {
             log.LogInformation($"{nameof(GetLegends)} function processed a request.");
 
-            var data = await File.ReadAllTextAsync(Path.Combine(context.FunctionAppDirectory, "data", "legends.json"));
-            var legends = JsonSerializer.Deserialize<IEnumerable<Legend>>(data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            var legends = await _cosmosDbRepository.GetItemsAsync("SELECT * FROM c");
             return new OkObjectResult(legends);
         }
     }

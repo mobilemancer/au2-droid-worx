@@ -1,5 +1,6 @@
 ﻿public class Legend
 {
+    public string Id { get; set; }
     public string About { get; set; }
     public string Allegiance { get; set; }
     public float Height { get; set; }
